@@ -20,11 +20,18 @@ public class Main {
         };
         new Thread(r1).start();//Sempre usar o .start non o run porque da problemas
 
-        Runnable r2 = new Runnable() {
-            Runnable r2 = () ->
-                System.out.println("hello lambda");
-            };
-            new Thread(r2).start();
+//        Runnable r2 = new Runnable() {
+//            Runnable r2 = () ->
+//                System.out.println("hello lambda");
+//            };
+//            new Thread(r2).start();
+
+        Thread th3 = new Thread(new MultiplicarPor2(9)); // Metemos o valor que queremos multiplicar polo thread que creamos con anteriridad
+        th3.start();
+        System.out.println("imprimir multiplicacion. ");
+
+
+
 
 
 
