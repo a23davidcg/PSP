@@ -1,6 +1,6 @@
 package org.example;
 
-public class newThread1 implements Runnable{
+public class newThread1 extends Thread{
 
     @Override
     public void run() {
