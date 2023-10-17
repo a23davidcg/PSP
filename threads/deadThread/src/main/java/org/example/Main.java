@@ -1,7 +1,7 @@
 package org.example;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         System.out.println("hello world");
 
         Thread th1 = new Thread(new newThread1());
@@ -28,8 +28,6 @@ public class Main {
 
         Thread th3 = new Thread(new MultiplicarPor2(9)); // Metemos o valor que queremos multiplicar polo thread que creamos con anteriridad
         th3.start();
-        th3.join(); //join vacio quere decir que espera a que pase o fio, si se le añaden milis e que espere ese tempo
-
         System.out.println("imprimir multiplicacion. ");
 
 
