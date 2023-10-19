@@ -6,10 +6,14 @@ import java.util.Random;
 
 public class RandomNumbersThread extends Thread{
 
+    public RandomNumbersThread(String name) {
+        super(name);
+    }
+
     @Override
     public void run() {
 
-        Thread.currentThread().setName("RandomThread Start: ");
+        System.out.println("Hello " + getName());
 
         Random numerosAleatorios = new Random();
 
@@ -22,7 +26,9 @@ public class RandomNumbersThread extends Thread{
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+
         }
-        //System.out.println(getName() + "Terminated ");
+        System.out.println("Terminated " + getName());
+
     }
 }

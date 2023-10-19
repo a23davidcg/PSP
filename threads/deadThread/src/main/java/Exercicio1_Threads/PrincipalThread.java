@@ -16,14 +16,18 @@ import java.util.Random;
 
 public class PrincipalThread {
     public static void main(String[] args) throws InterruptedException {
-        Thread hello = new Thread(new HelloThread());
-        Thread random = new Thread(new RandomNumbersThread());
-        Thread bye = new Thread(new GoodByeThread());
+        Thread fillo1 = new RandomNumbersThread("Fillo 1");
+        Thread fillo2 = new RandomNumbersThread("Fillo 2");
 
-        hello.start();
-        random.start();
-        hello.join();
-        random.join();
+        fillo1.start();
+        fillo2.start();
+        fillo1.join();
+        fillo2.join();
+        System.out.println("Xa se acabou o programa");
+
+
+
+
 
 
 
