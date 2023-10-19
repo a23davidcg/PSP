@@ -1,5 +1,9 @@
 package Exercicio2_Threads;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class ThreadMain {
 
     //We want to create a multithreading application.
@@ -12,15 +16,45 @@ public class ThreadMain {
     //1 if the proposed number (num) is the hidden number
     //0 otherwise
     //Follow the given specifications to create the application.
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        HiddenNumber hiddenNumber = new HiddenNumber();
+        Random random = new Random();
+        int numero = random.nextInt(0, 101);
+
+        HiddenNumber hiddenNumber = new HiddenNumber(numero);
+
+        List<Thread> listaThreads = new ArrayList<Thread>();
+
+        for (int i = 0; i < 10; i++) {
+            Thread thread = new RandomNumberGuesser(hiddenNumber);
+            thread.start();
+            listaThreads.add(thread);
+        }
+        for( Thread thread : listaThreads){
+            thread.join();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         System.out.println("The hidden number is: " + hiddenNumber.numberGuess(0));
 
         Thread[] guesserThreads = new Thread[10];
         for (int i = 0; i < 10; i++) {
-            guesserThreads[i] = new RandomNumber(hiddenNumber);
+            guesserThreads[i] = new RandomNumberGuesser(hiddenNumber);
             guesserThreads[i].start();
         }
 
