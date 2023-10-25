@@ -1,30 +1,27 @@
 package Exercicio2_Threads;
 
-public class HiddenNumber extends Thread{
+import java.util.concurrent.atomic.AtomicBoolean;
+
+public class HiddenNumber{ //SOLO SON FIOS AQUELAS CLASES QUE ESTEN DESTINADAS A AEJECUTAR UN CODIGO EN PARALELO
     private int hiddenNumber;
 
-    private boolean gameEnded;
+    private AtomicBoolean gameEnded;
 
     public HiddenNumber(int number) {
-        this.hiddenNumber = hiddenNumber;
-        this.gameEnded=false;
+        this.hiddenNumber = number;
+        this.gameEnded= new AtomicBoolean(false); //Evitar condicions de carrer
     }
 
-    public boolean isGameEnded() {
-        return gameEnded;
-    }
 
-    public int numberGuess (int number1){
+    public int numberGuess (int num){
 
-        if (gameEnded) {
+        if (gameEnded.get()) {
             return -1; // Game is already over
         }
-
-        if (number1 == hiddenNumber) {
-            gameEnded = true;
+        if (num == hiddenNumber) {
+            gameEnded.set(true);
             return 1; // Guessed correctly
         }
-
         return 0; // Guess is incorrect
     }
 }
