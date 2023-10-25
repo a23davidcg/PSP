@@ -30,24 +30,9 @@ public class ThreadMain {
             thread.start();
             listaThreads.add(thread);
         }
-        for( Thread thread : listaThreads){
+        for (Thread thread : listaThreads) {
             thread.join();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         System.out.println("The hidden number is: " + hiddenNumber.numberGuess(0));
@@ -65,9 +50,6 @@ public class ThreadMain {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
-
 
     }
 }
