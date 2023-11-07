@@ -13,6 +13,7 @@ public class Buzon {
                 System.out.println(Thread.currentThread().getName() + "Interrupted.");
             }
         }
+
         empty = true;//Reader reads the message and marks empty as true.
 
         notifyAll();
