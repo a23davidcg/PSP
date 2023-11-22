@@ -61,13 +61,13 @@ public class Student implements Runnable{
                 numb2 = r.nextInt(NUM_LIBROS);
                 System.out.println("The student " + this.getName() + " selected the book " + numb2);
             } while (numb1 == numb2);
-            try {
-                ReadBook.read(books[numb1], books[numb2],this);
-                long tSleep = r.nextInt(1000)+1000;
-                Thread.currentThread().sleep(tSleep);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+//            try {
+//                ReadBook.read(books[numb1], books[numb2],this);
+//                long tSleep = r.nextInt(1000)+1000;
+//                Thread.currentThread().sleep(tSleep);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
         }while(true);
 
     }

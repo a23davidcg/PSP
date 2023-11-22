@@ -6,9 +6,9 @@ public class Buzon {
 
     //Method used by reader
     public synchronized String read() {
-        while (empty) {
+        while (empty) {//equivale a true que queda facendo un bucle infinito, esperandoa que haxa un mensaje para ser recollido polo carteiro
             try {
-                wait();
+                wait(); //Queda esperando a que se escriba un m,ensaje para ser recollido polo carteiro
             } catch (InterruptedException e) {
                 System.out.println(Thread.currentThread().getName() + "Interrupted.");
             }
@@ -21,6 +21,7 @@ public class Buzon {
 
     //Method used by writer
     public synchronized void write(String message) {
+
         while (!empty) {
             try {
                 wait();

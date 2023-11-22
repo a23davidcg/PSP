@@ -15,12 +15,12 @@ public class MainThread {
                 new Book("Libro 9 .")
         };
 
-        Student[] student = {
-                new Student("Estudiante 1. "),
-                new Student("Estudiante 4. "),
-                new Student("Estudiante 5. "),
-                new Student("Estudiante 6. "),
-        };
+//        Student[] student = {
+//                new Student("Estudiante 1. "),
+//                new Student("Estudiante 4. "),
+//                new Student("Estudiante 5. "),
+//                new Student("Estudiante 6. "),
+//        };
 
 
 
