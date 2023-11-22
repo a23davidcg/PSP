@@ -141,13 +141,16 @@ package org.example;//package org.example;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException, SocketException {
+
         String subnet = "10.21.0"; // Ingresa la parte común de la dirección IP de tu LAN
         int timeout = 1000; // Tiempo de espera en milisegundos
 
@@ -162,6 +165,8 @@ public class Main {
                 try {
                     if (InetAddress.getByName(host).isReachable(timeout)) {
                         System.out.println(host + " está conectado");
+                    }else {
+                        System.out.println(host + " non esta conectado");
                     }
                 } catch (UnknownHostException e) {
                     e.printStackTrace();
@@ -172,6 +177,92 @@ public class Main {
         }
 
         executorService.shutdown();
+
+
     }
 }
 
+
+//import java.io.IOException;
+//import java.net.*;
+//
+//public class Main {
+//    public static void main(String[] args) throws IOException {
+//        final byte[] destIP;
+//        final byte[] maskIP;
+//        final byte[] ip= InetAddress.getLocalHost().getAddress();
+//        InetAddress localHost = Inet4Address.getLocalHost();
+//        NetworkInterface ni=NetworkInterface.getByInetAddress(localHost);
+//        short prefix=ni.getInterfaceAddresses().get(1).getNetworkPrefixLength();
+//        System.out.println("IPv4 localhost prefix:"+prefix);
+//        String IPstr = localHost.toString().substring(1);
+//        System.out.println("Localhost IP:"+IPstr);
+//        maskIP = getMask(prefix);
+//        byte[] networkIP =getNetworkIP(maskIP, ip);
+//        int last=(int)Math.pow(2,32-prefix)-1;
+//        destIP=networkIP;
+//        for (int j=1;j<last;j++){
+//            destIP[3]++;
+//            if (destIP[3]==0){
+//                destIP[2]++;
+//                if (destIP[2]==0){
+//                    destIP[1]++;
+//                    if (destIP[1]==0){
+//                        destIP[0]++;
+//                    }
+//                }
+//            }
+//            InetAddress address = InetAddress.getByAddress(destIP);
+//            String output = address.toString().substring(1);
+//            if (address.isReachable(1000)) {
+//                System.out.println(output + " is on the network");
+//            }
+//        }
+//
+//        System.out.println("Scan LAN IP program finished");
+//    }
+//
+//    private static byte[] getNetworkIP(byte[] maskIP, byte[] ip) {
+//        System.out.print("Network IP: ");
+//        byte[] networkIP=new byte[4];
+//        for (int i=0;i<4;i++){
+//            networkIP[i]= (byte) (ip[i]& maskIP[i]);
+//            System.out.print(networkIP[i]&0xFF);
+//            if (i<3){
+//                System.out.print(".");
+//            }
+//        }
+//        System.out.println();
+//        return networkIP;
+//    }
+//
+//    private static byte[] getMask(short prefix) {
+//        final byte[] maskIP;
+//        System.out.print("Newtwork mask:");
+//        final byte[] mask=new byte[4];
+//        StringBuilder prefixStr=new StringBuilder();
+//        int cont= prefix;
+//        for (int i=0;i<32;i++){
+//            if(cont>0){
+//                prefixStr.append("1");
+//            }else{
+//                prefixStr.append("0");
+//            }
+//            cont--;
+//        }
+//        maskIP=new byte[4];
+//        String[] maskIPstr = prefixStr.toString().split("(?<=\\G.{" + 8 + "})");
+//        for (int k=0;k<maskIPstr.length;k++){
+//            maskIP[k]=(byte)Integer.parseInt(maskIPstr[k],2);
+//            System.out.print(maskIP[k]&0xFF);
+//            if(k<maskIPstr.length-1){
+//                System.out.print(".");
+//            }
+//        }
+//        System.out.println();
+//        return maskIP;
+//    }
+//}
+//
+//
+//
