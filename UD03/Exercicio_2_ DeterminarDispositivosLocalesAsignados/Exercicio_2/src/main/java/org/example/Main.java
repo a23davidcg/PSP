@@ -151,7 +151,8 @@ public class Main {
 
     public static void main(String[] args) throws UnknownHostException, SocketException {
 
-        String subnet = "10.21.0"; // Ingresa la parte común de la dirección IP de tu LAN
+
+        String subnet = "192.168.1"; // Ingresa la parte común de la dirección IP de tu LAN
         int timeout = 1000; // Tiempo de espera en milisegundos
 
         System.out.println("Escaneando IPs en la LAN...");
@@ -191,6 +192,7 @@ public class Main {
 //        final byte[] destIP;
 //        final byte[] maskIP;
 //        final byte[] ip= InetAddress.getLocalHost().getAddress();
+//        System.out.println(InetAddress.getLocalHost().getHostAddress());
 //        InetAddress localHost = Inet4Address.getLocalHost();
 //        NetworkInterface ni=NetworkInterface.getByInetAddress(localHost);
 //        short prefix=ni.getInterfaceAddresses().get(1).getNetworkPrefixLength();
@@ -263,6 +265,3 @@ public class Main {
 //        return maskIP;
 //    }
 //}
-//
-//
-//
